@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>addon-ckan</artifactId>
+		<groupId>it.4science.dspace</groupId>
+		<version>5.0-SNAPSHOT</version>
+		<relativePath>../</relativePath>
+	</parent>
+	<groupId>it.4science.dspace</groupId>
+	<artifactId>addon-ckan-jspui</artifactId>
+	<packaging>war</packaging>
+	<name>4Science CKAN Integration JSPUI</name>
+	
+	<build>
+	  <finalName>addon-ckan-jspui</finalName>	
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <configuration>
+               <archiveClasses>false</archiveClasses>
+               <!-- In version 2.1-alpha-1, this was incorrectly named warSourceExcludes -->
+               <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes>
+               <warSourceExcludes>WEB-INF/lib/*.jar</warSourceExcludes>
+               <failOnMissingWebXml>false</failOnMissingWebXml>
+               <webResources>
+                  <resource>
+                     <filtering>true</filtering>
+                     <directory>${basedir}/src/main/webapp</directory>
+                     <includes>
+                        <include>WEB-INF/web-fragment.xml</include>
+                     </includes>
+                  </resource>
+               </webResources>
+            </configuration>
+            <executions>
+               <execution>
+                  <phase>prepare-package</phase>
+               </execution>
+            </executions>
+         </plugin>
+      </plugins>
+   </build>
+		
+	<dependencies>
+		<dependency>
+			<groupId>it.4science.dspace</groupId>
+			<artifactId>addon-commons-jspui</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>it.4science.dspace</groupId>
+			<artifactId>addon-ckan-api</artifactId>
+		</dependency>
+ 		<dependency>
+			<groupId>org.dspace</groupId>
+			<artifactId>dspace-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.dspace</groupId>
+			<artifactId>dspace-jspui</artifactId>
+			<type>jar</type>
+			<classifier>classes</classifier>
+		</dependency>
+ 	</dependencies>
+
+	<version>5.0-SNAPSHOT</version>
+</project>

@@ -1,0 +1,139 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>it.4science.dspace</groupId>
+	<artifactId>addon-ckan</artifactId>
+	<version>5.0-SNAPSHOT</version>
+	<organization>
+		<name>4Science</name>
+		<url>http://www.4science.it/en/</url>
+	</organization>
+	<packaging>pom</packaging>
+	<name>DSpace CKAN Integration</name>
+
+
+	<scm>
+		<connection>scm:git:https://github.com/4Science/DSpace-CKAN.git</connection>
+		<developerConnection>scm:git:https://github.com/4Science/DSpace-CKAN.git</developerConnection>
+		<url>https://github.com/4Science/DSpace-CKAN.git</url>
+		<tag>1.0</tag>
+	</scm>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<addon-commons.version>5.0-SNAPSHOT</addon-commons.version>
+	</properties>
+	<distributionManagement>
+		<repository>
+			<id>repo</id>
+			<name>4Science Maven Repository</name>
+			<url>https://github.com/4Science/mvn-repo/raw/master/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshot-repo</id>
+			<name>4Science Maven Repository</name>
+			<url>https://github.com/4Science/mvn-repo/raw/master/snapshots</url>
+		</snapshotRepository>
+		<site>
+			<id>website</id>
+			<url>https://github.com/4Science/DSpace-CKAN/wiki</url>
+		</site>
+	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<id>4Science-repo</id>
+			<name>4Science Maven Repository</name>
+			<url>https://github.com/4Science/mvn-repo/raw/master/releases</url>
+			<releases>
+				<enabled>true</enabled>
+				<checksumPolicy>never</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<checksumPolicy>never</checksumPolicy>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>4Science-repo-snapshot</id>
+			<name>4Science Maven Repository</name>
+			<url>https://github.com/4Science/mvn-repo/raw/master/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+				<checksumPolicy>never</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<checksumPolicy>never</checksumPolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.4.1</version>
+				<configuration>
+					<!-- During release:perform, enable the "release" profile (see below) -->
+					<releaseProfiles>release</releaseProfiles>
+					<goals>deploy</goals>
+					<!-- Suggest tagging the release in SCM as "dspace-[version]" -->
+					<tagNameFormat>@{project.version}</tagNameFormat>
+					<!-- Auto-Version all modules the same as the parent module -->
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<!-- The 'release' profile is used by the 'maven-release-plugin' (see above) -->
+		<profile>
+			<id>release</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>api</module>
+				<module>jspui</module>
+			</modules>
+		</profile>
+	</profiles>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.dspace</groupId>
+				<artifactId>dspace-api</artifactId>
+				<version>[CRIS-5.0.0-SNAPSHOT,CRIS-6.0.0-SNAPSHOT)</version>
+			</dependency>
+			<dependency>
+				<groupId>org.dspace</groupId>
+				<artifactId>dspace-jspui</artifactId>
+				<type>jar</type>
+				<classifier>classes</classifier>
+				<version>[CRIS-5.0.0-SNAPSHOT,CRIS-6.0.0-SNAPSHOT)</version>
+			</dependency>
+			<dependency>
+				<groupId>it.4science.dspace</groupId>
+				<artifactId>addon-commons-jspui</artifactId>
+				<version>${addon-commons.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>it.4science.dspace</groupId>
+				<artifactId>addon-ckan-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>
