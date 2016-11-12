@@ -47,6 +47,7 @@
 		<dependency>
 			<groupId>it.4science.dspace</groupId>
 			<artifactId>addon-commons-jspui</artifactId>
+			<type>war</type>
 		</dependency>
 		<dependency>
 			<groupId>it.4science.dspace</groupId>

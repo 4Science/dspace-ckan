@@ -23,6 +23,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<addon-commons.version>5.0-SNAPSHOT</addon-commons.version>
 	</properties>
+	
 	<distributionManagement>
 		<repository>
 			<id>repo</id>
@@ -109,7 +110,18 @@
 				<module>jspui</module>
 			</modules>
 		</profile>
+        <profile>
+            <id>addon-ckan</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>api</module>
+				<module>jspui</module>
+			</modules>
+        </profile>		
 	</profiles>
+		
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -127,6 +139,7 @@
 			<dependency>
 				<groupId>it.4science.dspace</groupId>
 				<artifactId>addon-commons-jspui</artifactId>
+				<type>war</type>
 				<version>${addon-commons.version}</version>
 			</dependency>
 			<dependency>
