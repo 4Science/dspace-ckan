@@ -3,7 +3,6 @@
 
 	<groupId>it.4science.dspace</groupId>
 	<artifactId>addon-ckan-api</artifactId>
-	<version>5.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	
 	<parent>
@@ -12,7 +11,12 @@
 		<relativePath>../</relativePath>
 		<version>5.0-SNAPSHOT</version>
 	</parent>
-	
+
+    <properties>
+        <!-- This is the path to the root [dspace-src] directory. -->
+        <root.basedir>${basedir}/..</root.basedir>
+    </properties>
+    
 	<dependencies>
 		<dependency>
 			<groupId>org.dspace</groupId>

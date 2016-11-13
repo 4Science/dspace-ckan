@@ -11,7 +11,12 @@
 	<artifactId>addon-ckan-jspui</artifactId>
 	<packaging>war</packaging>
 	<name>4Science CKAN Integration JSPUI</name>
-	
+
+    <properties>
+        <!-- This is the path to the root [dspace-src] directory. -->
+        <root.basedir>${basedir}/..</root.basedir>
+    </properties>
+    	
 	<build>
 	  <finalName>addon-ckan-jspui</finalName>	
       <plugins>
@@ -51,6 +56,11 @@
 		</dependency>
 		<dependency>
 			<groupId>it.4science.dspace</groupId>
+			<artifactId>addon-commons-api</artifactId>
+			<type>jar</type>
+		</dependency>		
+		<dependency>
+			<groupId>it.4science.dspace</groupId>
 			<artifactId>addon-ckan-api</artifactId>
 		</dependency>
  		<dependency>
@@ -63,7 +73,11 @@
 			<type>jar</type>
 			<classifier>classes</classifier>
 		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
  	</dependencies>
 
-	<version>5.0-SNAPSHOT</version>
 </project>

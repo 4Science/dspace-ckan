@@ -1,0 +1,4 @@
+DSpace CRIS Integration
+=======================
+
+Check the Wiki: https://wiki.duraspace.org/display/DSPACECRIS/DSpace-CRIS+Home
