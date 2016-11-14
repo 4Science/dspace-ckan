@@ -206,6 +206,12 @@
 			</dependency>
 			<dependency>
 				<groupId>it.4science.dspace</groupId>
+				<artifactId>addon-commons-jspui</artifactId>
+				<type>jar</type>
+				<version>${project.version}</version>				
+			</dependency>			
+			<dependency>
+				<groupId>it.4science.dspace</groupId>
 				<artifactId>addon-commons-api</artifactId>
 				<type>jar</type>
 				<version>${addon-commons.version}</version>

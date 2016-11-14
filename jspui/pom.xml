@@ -27,7 +27,7 @@
             <configuration>
                <archiveClasses>false</archiveClasses>
                <!-- In version 2.1-alpha-1, this was incorrectly named warSourceExcludes -->
-               <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes>
+               <!-- <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes> -->
                <warSourceExcludes>WEB-INF/lib/*.jar</warSourceExcludes>
                <failOnMissingWebXml>false</failOnMissingWebXml>
                <webResources>
@@ -55,6 +55,11 @@
 			<artifactId>addon-commons-jspui</artifactId>
 			<type>war</type>
 		</dependency>
+		<dependency>
+			<groupId>it.4science.dspace</groupId>
+			<artifactId>addon-commons-jspui</artifactId>
+			<type>jar</type>
+		</dependency>		
 		<dependency>
 			<groupId>it.4science.dspace</groupId>
 			<artifactId>addon-commons-api</artifactId>

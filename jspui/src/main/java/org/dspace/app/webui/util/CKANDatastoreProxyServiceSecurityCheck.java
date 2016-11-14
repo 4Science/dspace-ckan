@@ -8,6 +8,7 @@
 package org.dspace.app.webui.util;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.sql.SQLException;
 
 import javax.servlet.ServletInputStream;
@@ -26,29 +27,29 @@ import org.json.JSONObject;
 
 public class CKANDatastoreProxyServiceSecurityCheck implements IProxyServiceSecurityCheck {
 
-Logger log = Logger.getLogger(CKANDatastoreProxyServiceSecurityCheck.class);	
-	@Override
-	public void extraSecurityCheck(Context context, Bitstream bit, HttpServletRequest req)
-			throws AuthorizationException, SQLException, IOException {
-		if (bit == null)
+Logger log = Logger.getLogger(CKANDatastoreProxyServiceSecurityCheck.class);    
+    @Override
+    public void extraSecurityCheck(Context context, Bitstream bit, HttpServletRequest req)
+            throws AuthorizationException, SQLException, IOException {
+        if (bit == null)
         {
             // No bitstream found or filename was wrong -- ID invalid
             log.info("Viewer CKAN tryng to access an invalid bitstream");
             return;
-        }		
+        }       
         
-		if(!AuthorizeManager.authorizeActionBoolean(context, bit, Constants.READ)){
-			throw new AuthorizationException();
-		}
+        if(!AuthorizeManager.authorizeActionBoolean(context, bit, Constants.READ)){
+            throw new AuthorizationException();
+        }
 
-		ServletInputStream inputStream = req.getInputStream();
-		String value = IOUtils.toString(inputStream);
-		JSONObject jOb = new JSONObject(value);
-		String resource_id= bit.getMetadata(CKANConstants.CKAN_METADATA_STRING_RESOURCEID);
-		if(!StringUtils.equals(resource_id, jOb.getString("resource_id"))){
-			throw new AuthorizationException("tryng to access resource_id"+ jOb.getString("resource_id")+"not related to bitstream:"+ bit.getID());
-		}
-	
-	}
-	
+        ServletInputStream inputStream = req.getInputStream();        
+        String value = IOUtils.toString(inputStream);        
+        JSONObject jOb = new JSONObject(URLDecoder.decode(value));
+        String resource_id= bit.getMetadata(CKANConstants.CKAN_METADATA_STRING_RESOURCEID);
+        if(!StringUtils.equals(resource_id, jOb.getString("resource_id"))){
+            throw new AuthorizationException("tryng to access resource_id"+ jOb.getString("resource_id")+"not related to bitstream:"+ bit.getID());
+        }
+    
+    }
+    
 }

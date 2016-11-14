@@ -54,7 +54,7 @@
     <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/plugins/slick.rowmovemanager.js" type="text/javascript"></script>
 
     <!-- Recline JS (combined distribution, all views) -->
-    <script src="<%= request.getContextPath() %>/recline/dist/recline.js" type="text/javascript"></script>
+    <script src="<%= request.getContextPath() %>/recline/recline.js" type="text/javascript"></script>
     
     <script src="<%= request.getContextPath() %>/recline/jquery-2.1.4.min.js"></script>
 	<script src="<%= request.getContextPath() %>/recline/ckan.js"></script>
