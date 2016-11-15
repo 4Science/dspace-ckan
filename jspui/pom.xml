@@ -57,14 +57,8 @@
 		</dependency>
 		<dependency>
 			<groupId>it.4science.dspace</groupId>
-			<artifactId>addon-commons-jspui</artifactId>
-			<type>jar</type>
-		</dependency>		
-		<dependency>
-			<groupId>it.4science.dspace</groupId>
 			<artifactId>addon-commons-api</artifactId>
-			<type>jar</type>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>it.4science.dspace</groupId>
 			<artifactId>addon-ckan-api</artifactId>
