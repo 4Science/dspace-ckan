@@ -191,6 +191,7 @@
 				<groupId>org.dspace</groupId>
 				<artifactId>dspace-api</artifactId>
 				<version>${dspace-cris.version}</version>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.dspace</groupId>
@@ -198,6 +199,7 @@
 				<type>jar</type>
 				<classifier>classes</classifier>
 				<version>${dspace-cris.version}</version>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>it.4science.dspace</groupId>
@@ -207,10 +209,17 @@
 			</dependency>
 			<dependency>
 				<groupId>it.4science.dspace</groupId>
+				<artifactId>addon-commons-jspui</artifactId>
+				<type>jar</type>
+				<classifier>classes</classifier>
+				<version>${addon-commons.version}</version>
+			</dependency>			
+			<dependency>
+				<groupId>it.4science.dspace</groupId>
 				<artifactId>addon-commons-api</artifactId>
 				<type>jar</type>
 				<version>${addon-commons.version}</version>
-			</dependency>			
+			</dependency>
 			<dependency>
 				<groupId>it.4science.dspace</groupId>
 				<artifactId>addon-ckan-api</artifactId>
@@ -220,6 +229,7 @@
 				<groupId>javax.servlet</groupId>
 				<artifactId>javax.servlet-api</artifactId>
 				<version>3.0.1</version>
+				<scope>provided</scope>
 			</dependency>			
 		</dependencies>
 	</dependencyManagement>
