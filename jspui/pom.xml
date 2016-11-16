@@ -57,12 +57,6 @@
 		</dependency>
 		<dependency>
 			<groupId>it.4science.dspace</groupId>
-			<artifactId>addon-commons-jspui</artifactId>
-			<type>jar</type>
-			<classifier>classes</classifier>
-		</dependency>		
-		<dependency>
-			<groupId>it.4science.dspace</groupId>
 			<artifactId>addon-commons-api</artifactId>
 		</dependency>
 		<dependency>
