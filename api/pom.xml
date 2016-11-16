@@ -9,7 +9,7 @@
 		<artifactId>addon-ckan</artifactId>
 		<groupId>it.4science.dspace</groupId>
 		<relativePath>../</relativePath>
-		<version>5.0</version>
+		<version>5.1-SNAPSHOT</version>
 	</parent>
 
     <properties>
