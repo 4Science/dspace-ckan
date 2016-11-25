@@ -31,3 +31,5 @@ nb-configuration.xml
 .DS_Store
 rebel.xml
 .externalToolBuilders/
+jspui/src/test/java/META-INF/MANIFEST.MF
+jspui/src/test/java/META-INF/web-fragment.xml
