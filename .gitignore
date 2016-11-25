@@ -22,7 +22,6 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
-META-INF/
 
 ## Ignore all *.properties file in root folder, EXCEPT build.properties (the default)
 /*.properties
