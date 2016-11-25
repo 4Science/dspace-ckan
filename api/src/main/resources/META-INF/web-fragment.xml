@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-fragment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:webfragment="http://java.sun.com/xml/ns/javaee/web-fragment_3_0.xsd"
+
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-fragment_3_1.xsd"
+
+	id="CKAN_WEB_FRAGMENT" version="3.1">
+
+
+	<servlet>
+		<servlet-name>datastore</servlet-name>
+		<servlet-class>org.dspace.app.webui.servlet.ConfigurableProxyServlet</servlet-class>
+		<init-param>
+			<param-name>log</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>moduleName</param-name>
+			<param-value>ckan</param-value>
+		</init-param>
+		<init-param>
+			<param-name>serverUrlPropertyName</param-name>
+			<param-value>datastore.service.url</param-value>
+		</init-param>
+		<init-param>
+			<param-name>proxyServiceSecurityCheck</param-name>
+			<param-value>ckanDataStoreSecurityCheck</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceRewriteRelativePath</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>datastore</servlet-name>
+		<url-pattern>/ckan/*</url-pattern>
+	</servlet-mapping>
+
+</web-fragment>
