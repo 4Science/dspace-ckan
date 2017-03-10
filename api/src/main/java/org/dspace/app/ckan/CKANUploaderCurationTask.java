@@ -133,51 +133,85 @@ public class CKANUploaderCurationTask extends AbstractCurationTask {
 				String fileName = b.getName();
 				fileName = URLEncoder.encode(fileName);
 				File file = new File(path);
-				DefaultHttpClient resClient = new DefaultHttpClient();
-				HttpPost post = new HttpPost(serviceURL+"api/action/resource_create");
-	            post.addHeader("Authorization", serviceApiKey);
-	            MultipartEntityBuilder builder = MultipartEntityBuilder.create();
-	            builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-	            builder.addBinaryBody("upload", file, ContentType.DEFAULT_BINARY, b.getName());
-	            builder.addTextBody("package_id", packageName, ContentType.DEFAULT_TEXT);
-	            builder.addTextBody("name", fileName, ContentType.DEFAULT_TEXT);
-	            // 
-	            HttpEntity entity = builder.build();
-	            post.setEntity(entity);
-	        
-	            HttpResponse response = resClient.execute(post);
-	            
-				InputStream is = response.getEntity().getContent();
-				String myString = IOUtils.toString(is, "UTF-8");
-				JSONObject jObj = new JSONObject(myString);
-				Boolean success = jObj.getBoolean("success");
 				
-				if(success){
-					String resourceID = jObj.getJSONObject("result").getString("id");
-//					InputStream in = new URL( serviceURL+"api/action/resource_view_list?id="+resourceID ).openStream();
-//					String value = IOUtils.toString(in, "UTF-8");
-					b.addMetadata(IViewer.BITSTREAM_SCHEMA, IViewer.VIEWER_ELEMENT, IViewer.PROVIDER_QUALIFIER, Item.ANY, "ckan-recline");
-//					JSONObject jOb= new JSONObject(in);
-//					JSONArray jResult = jObj.getJSONArray("result");
-//					String resource_id= jResult.getJSONObject(0).getString("resource_id");
-//					String package_id= jResult.getJSONObject(0).getString("package_id");
-//					String view_id = jResult.getJSONObject(0).getString("id");
-//					b.addMetadata("ckan", "packageid", null, Item.ANY, package_id );
-					b.addMetadata(CKANConstants.CKAN_METADATA_RESOURCEID[0],
-							CKANConstants.CKAN_METADATA_RESOURCEID[1], 
-							CKANConstants.CKAN_METADATA_RESOURCEID[2], 
-							Item.ANY, resourceID );
-//					b.addMetadata("ckan", "viewid", null, Item.ANY, view_id );
-					try {
-						b.update();
-					} catch (AuthorizeException e) {
-						throw new RuntimeException(e.getMessage(), e); 
-					}
-//					in.close();
-				}
-				resClient.close();
-				is.close();
- 			}
+				DefaultHttpClient resClient = null; 
+				InputStream is = null;
+				
+                try
+                {
+                    resClient = new DefaultHttpClient();
+                    HttpPost post = new HttpPost(
+                            serviceURL + "api/action/resource_create");
+                    post.addHeader("Authorization", serviceApiKey);
+                    MultipartEntityBuilder builder = MultipartEntityBuilder
+                            .create();
+                    builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
+                    builder.addBinaryBody("upload", file,
+                            ContentType.DEFAULT_BINARY, b.getName());
+                    builder.addTextBody("package_id", packageName,
+                            ContentType.DEFAULT_TEXT);
+                    builder.addTextBody("name", fileName,
+                            ContentType.DEFAULT_TEXT);
+                    //
+                    HttpEntity entity = builder.build();
+                    post.setEntity(entity);
+
+                    HttpResponse response = resClient.execute(post);
+
+                    is = response.getEntity().getContent();
+                    String myString = IOUtils.toString(is, "UTF-8");
+                    JSONObject jObj = new JSONObject(myString);
+                    Boolean success = jObj.getBoolean("success");
+
+                    if (success)
+                    {
+                        String resourceID = jObj.getJSONObject("result")
+                                .getString("id");
+                        // InputStream in = new URL(
+                        // serviceURL+"api/action/resource_view_list?id="+resourceID
+                        // ).openStream();
+                        // String value = IOUtils.toString(in, "UTF-8");
+                        b.addMetadata(IViewer.BITSTREAM_SCHEMA,
+                                IViewer.VIEWER_ELEMENT,
+                                IViewer.PROVIDER_QUALIFIER, Item.ANY,
+                                "ckan-recline");
+                        // JSONObject jOb= new JSONObject(in);
+                        // JSONArray jResult = jObj.getJSONArray("result");
+                        // String resource_id=
+                        // jResult.getJSONObject(0).getString("resource_id");
+                        // String package_id=
+                        // jResult.getJSONObject(0).getString("package_id");
+                        // String view_id =
+                        // jResult.getJSONObject(0).getString("id");
+                        // b.addMetadata("ckan", "packageid", null, Item.ANY,
+                        // package_id );
+                        b.addMetadata(CKANConstants.CKAN_METADATA_RESOURCEID[0],
+                                CKANConstants.CKAN_METADATA_RESOURCEID[1],
+                                CKANConstants.CKAN_METADATA_RESOURCEID[2],
+                                Item.ANY, resourceID);
+                        // b.addMetadata("ckan", "viewid", null, Item.ANY,
+                        // view_id );
+                        try
+                        {
+                            b.update();
+                        }
+                        catch (AuthorizeException e)
+                        {
+                            throw new RuntimeException(e.getMessage(), e);
+                        }
+                        // in.close();
+                    }
+                }
+                finally
+                {
+                    if(is!=null){
+                        is.close();
+                    }
+                    if(resClient!=null) {
+                        resClient.close();
+                    }                                        
+                }                
+            }
         }
 		c.commit();
 	}
