@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpEntity;
@@ -32,12 +33,14 @@ import org.dspace.content.Bitstream;
 import org.dspace.content.Bundle;
 import org.dspace.content.DSpaceObject;
 import org.dspace.content.Item;
+import org.dspace.content.factory.ContentServiceFactory;
+import org.dspace.content.service.BitstreamService;
 import org.dspace.core.ConfigurationManager;
 import org.dspace.core.Context;
 import org.dspace.curate.AbstractCurationTask;
 import org.dspace.curate.Curator;
 import org.dspace.curate.Distributive;
-import org.dspace.storage.bitstore.BitstreamStorageManager;
+import org.dspace.storage.bitstore.factory.StorageServiceFactory;
 import org.json.JSONObject;
 
 @Distributive
@@ -78,6 +81,7 @@ public class CKANUploaderCurationTask extends AbstractCurationTask {
     protected void performItem(Item item) throws SQLException, IOException
     {
 		Context c = Curator.curationContext();
+		BitstreamService bitstreamService = ContentServiceFactory.getInstance().getBitstreamService();
 		
 		boolean datasetExist = false;
 		String packageName= StringUtils.replace(item.getHandle(),"/","-");
@@ -87,7 +91,7 @@ public class CKANUploaderCurationTask extends AbstractCurationTask {
         {
             for (Bitstream b : bundle.getBitstreams())
             {
-            	String sourceMeta = b.getMetadata(CKANConstants.CKAN_METADATA_STRING_RESOURCEID);
+				String sourceMeta = bitstreamService.getMetadata(b, CKANConstants.CKAN_METADATA_STRING_RESOURCEID);
 				if(StringUtils.isNotBlank(sourceMeta)){
 					// skip already processed bitstreams
 					continue;
@@ -129,10 +133,11 @@ public class CKANUploaderCurationTask extends AbstractCurationTask {
 		 			httpclient.close();
 				}		 			
 
-				String path = BitstreamStorageManager.absolutePath(c, b.getID());
+				InputStream orginalStream = StorageServiceFactory.getInstance().getBitstreamStorageService().retrieve(c, b);
 				String fileName = b.getName();
 				fileName = URLEncoder.encode(fileName);
-				File file = new File(path);
+				File targetFile = File.createTempFile("ckan-", ".tmp");
+				FileUtils.copyInputStreamToFile(orginalStream, targetFile);
 				
 				DefaultHttpClient resClient = null; 
 				InputStream is = null;
@@ -146,7 +151,7 @@ public class CKANUploaderCurationTask extends AbstractCurationTask {
                     MultipartEntityBuilder builder = MultipartEntityBuilder
                             .create();
                     builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-                    builder.addBinaryBody("upload", file,
+                    builder.addBinaryBody("upload", targetFile,
                             ContentType.DEFAULT_BINARY, b.getName());
                     builder.addTextBody("package_id", packageName,
                             ContentType.DEFAULT_TEXT);
@@ -171,7 +176,7 @@ public class CKANUploaderCurationTask extends AbstractCurationTask {
                         // serviceURL+"api/action/resource_view_list?id="+resourceID
                         // ).openStream();
                         // String value = IOUtils.toString(in, "UTF-8");
-                        b.addMetadata(IViewer.BITSTREAM_SCHEMA,
+                        bitstreamService.addMetadata(c, b, IViewer.BITSTREAM_SCHEMA,
                                 IViewer.VIEWER_ELEMENT,
                                 IViewer.PROVIDER_QUALIFIER, Item.ANY,
                                 "ckan-recline");
@@ -185,7 +190,7 @@ public class CKANUploaderCurationTask extends AbstractCurationTask {
                         // jResult.getJSONObject(0).getString("id");
                         // b.addMetadata("ckan", "packageid", null, Item.ANY,
                         // package_id );
-                        b.addMetadata(CKANConstants.CKAN_METADATA_RESOURCEID[0],
+                        bitstreamService.addMetadata(c, b, CKANConstants.CKAN_METADATA_RESOURCEID[0],
                                 CKANConstants.CKAN_METADATA_RESOURCEID[1],
                                 CKANConstants.CKAN_METADATA_RESOURCEID[2],
                                 Item.ANY, resourceID);
@@ -193,7 +198,7 @@ public class CKANUploaderCurationTask extends AbstractCurationTask {
                         // view_id );
                         try
                         {
-                            b.update();
+                        	bitstreamService.update(c, b);
                         }
                         catch (AuthorizeException e)
                         {

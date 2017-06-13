@@ -19,8 +19,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.dspace.app.ckan.CKANConstants;
 import org.dspace.authorize.AuthorizeException;
-import org.dspace.authorize.AuthorizeManager;
+import org.dspace.authorize.factory.AuthorizeServiceFactory;
 import org.dspace.content.Bitstream;
+import org.dspace.content.factory.ContentServiceFactory;
+import org.dspace.content.service.BitstreamService;
 import org.dspace.core.Constants;
 import org.dspace.core.Context;
 import org.json.JSONObject;
@@ -38,14 +40,15 @@ Logger log = Logger.getLogger(CKANDatastoreProxyServiceSecurityCheck.class);
             return;
         }       
         
-        if(!AuthorizeManager.authorizeActionBoolean(context, bit, Constants.READ)){
+        if(!AuthorizeServiceFactory.getInstance().getAuthorizeService().authorizeActionBoolean(context, bit, Constants.READ)){
             throw new AuthorizeException();
         }
 
+        BitstreamService bitstreamService = ContentServiceFactory.getInstance().getBitstreamService();
         ServletInputStream inputStream = req.getInputStream();        
         String value = IOUtils.toString(inputStream);        
         JSONObject jOb = new JSONObject(URLDecoder.decode(value));
-        String resource_id= bit.getMetadata(CKANConstants.CKAN_METADATA_STRING_RESOURCEID);
+        String resource_id= bitstreamService.getMetadata(bit, CKANConstants.CKAN_METADATA_STRING_RESOURCEID);
         if(!StringUtils.equals(resource_id, jOb.getString("resource_id"))){
             throw new AuthorizeException("tryng to access resource_id"+ jOb.getString("resource_id")+"not related to bitstream:"+ bit.getID());
         }
