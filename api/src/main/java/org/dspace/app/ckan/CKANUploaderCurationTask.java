@@ -218,6 +218,5 @@ public class CKANUploaderCurationTask extends AbstractCurationTask {
                 }                
             }
         }
-		c.commit();
 	}
 }
