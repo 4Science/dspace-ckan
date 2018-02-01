@@ -4,4 +4,5 @@ This plugin works out-of-box with DSpace-CRIS (https://wiki.duraspace.org/displa
 The plugin provides a curation task to send tabular data ingested in DSpace to a backend CKAN instance. The CKAN instance doesn't need to be exposed over internet, it only need to be visible to the DSpace server.
 The integration uses the CKAN REST API (an organisation CKAN API KEY need to be configured).
 
-More information: www.4science.it/en/ckan-integration/
+More information: https://www.4science.it/en/ckan-integration/
+Installation: https://wiki.duraspace.org/display/DSPACECRIS/CKAN+integration
