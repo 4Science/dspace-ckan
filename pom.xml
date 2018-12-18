@@ -29,15 +29,15 @@
 	
 	<distributionManagement>
 		<repository>
-			<id>repo</id>
-			<name>4Science Maven Repository</name>
-			<url>https://github.com/4Science/mvn-repo/raw/master/releases</url>
+			<id>4science-nexus</id>
+			<name>4Science Public Releases</name>
+			<url>https://nexus.4science.it/repository/maven-releases/</url>
 		</repository>
-		<snapshotRepository>
-			<id>snapshot-repo</id>
-			<name>4Science Maven Repository</name>
-			<url>https://github.com/4Science/mvn-repo/raw/master/snapshots</url>
-		</snapshotRepository>
+    		<snapshotRepository>
+	        	<id>4science-snapshot</id>
+        		<name>4Science Public Snapshot</name>
+        		<url>https://nexus.4science.it/repository/maven-snapshots/</url>
+	    	</snapshotRepository>
 		<site>
 			<id>website</id>
 			<url>https://github.com/4Science/DSpace-CKAN/wiki</url>
@@ -46,32 +46,10 @@
 
 	<repositories>
 		<repository>
-			<id>4Science-repo</id>
+			<id>4science-repo-nexus</id>
 			<name>4Science Maven Repository</name>
-			<url>https://github.com/4Science/mvn-repo/raw/master/releases</url>
-			<releases>
-				<enabled>true</enabled>
-				<checksumPolicy>never</checksumPolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<checksumPolicy>never</checksumPolicy>
-			</snapshots>
-		</repository>
-
-		<repository>
-			<id>4Science-repo-snapshot</id>
-			<name>4Science Maven Repository</name>
-			<url>https://github.com/4Science/mvn-repo/raw/master/snapshots</url>
-			<releases>
-				<enabled>false</enabled>
-				<checksumPolicy>never</checksumPolicy>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<checksumPolicy>never</checksumPolicy>
-			</snapshots>
-		</repository>
+			<url>https://nexus.4science.it/repository/maven-public/</url>
+		</repository>	
 	</repositories>
 	
 	<build>
