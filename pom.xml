@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>it.4science.dspace</groupId>
 	<artifactId>addon-ckan</artifactId>
-	<version>5.1-SNAPSHOT</version>
+	<version>CRIS-5.1-SNAPSHOT</version>
 	<organization>
 		<name>4Science</name>
 		<url>http://www.4science.it/en/</url>
@@ -20,8 +20,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<dspace-cris.version>[CRIS-5.6.2-SNAPSHOT,CRIS-6.0.0-SNAPSHOT)</dspace-cris.version>
-		<addon-commons.version>[5.1-SNAPSHOT,6.0-SNAPSHOT)</addon-commons.version>
+		<dspace-cris.version>[CRIS-5.10.0-SNAPSHOT,CRIS-6.0.0-SNAPSHOT)</dspace-cris.version>
+		<addon-commons.version>[CRIS-5.3-SNAPSHOT,CRIS-6.0-SNAPSHOT)</addon-commons.version>
         <!-- 'root.basedir' is the path to the root [src] dir. It must be redefined by each child POM,
              as it is used to reference the LICENSE_HEADER and *.properties file(s) in that directory. -->		
 		<root.basedir>${basedir}</root.basedir>
