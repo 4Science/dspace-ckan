@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>addon-ckan</artifactId>
 		<groupId>it.4science.dspace</groupId>
-		<version>CRIS-5.1-SNAPSHOT</version>
+		<version>BASE-5.0-SNAPSHOT</version>
 		<relativePath>../</relativePath>
 	</parent>
 	<groupId>it.4science.dspace</groupId>
