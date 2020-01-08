@@ -20,7 +20,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<dspace.version>[5.0-SNAPSHOT,6.0-SNAPSHOT)</dspace.version>
+		<dspace.version>[5.0-SNAPSHOT,6.0-rc1-SNAPSHOT)</dspace.version>
 		<addon-commons.version>[BASE-5.0-SNAPSHOT,BASE-6.0-SNAPSHOT)</addon-commons.version>
         <!-- 'root.basedir' is the path to the root [src] dir. It must be redefined by each child POM,
              as it is used to reference the LICENSE_HEADER and *.properties file(s) in that directory. -->		
@@ -153,6 +153,7 @@
 			<modules>
 				<module>api</module>
 				<module>jspui</module>
+				<module>xmlui</module>
 			</modules>
 		</profile>
 	</profiles>
@@ -160,6 +161,7 @@
 	<modules>
 		<module>api</module>
 		<module>jspui</module>
+		<module>xmlui</module>
 	</modules>
 		
 	<dependencyManagement>
@@ -179,6 +181,14 @@
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
+				<groupId>org.dspace</groupId>
+				<artifactId>dspace-xmlui</artifactId>
+				<type>jar</type>
+				<classifier>classes</classifier>
+				<version>${dspace.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
 				<groupId>it.4science.dspace</groupId>
 				<artifactId>addon-commons-jspui</artifactId>
 				<type>war</type>
@@ -186,7 +196,34 @@
 			</dependency>
 			<dependency>
 				<groupId>it.4science.dspace</groupId>
+				<artifactId>addon-commons-ui</artifactId>
+				<type>jar</type>
+				<classifier>classes</classifier>
+				<version>${addon-commons.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>it.4science.dspace</groupId>
+				<artifactId>addon-commons-xmlui</artifactId>
+				<type>war</type>
+				<version>${addon-commons.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>it.4science.dspace</groupId>
+				<artifactId>addon-commons-xmlui</artifactId>
+				<type>jar</type>
+				<version>${addon-commons.version}</version>
+				<classifier>classes</classifier>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>it.4science.dspace</groupId>
 				<artifactId>addon-commons-api</artifactId>
+				<type>jar</type>
+				<version>${addon-commons.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>it.4science.dspace</groupId>
+				<artifactId>addon-commons-xmlui-web</artifactId>
 				<type>jar</type>
 				<version>${addon-commons.version}</version>
 			</dependency>
@@ -200,7 +237,18 @@
 				<artifactId>javax.servlet-api</artifactId>
 				<version>3.0.1</version>
 				<scope>provided</scope>
-			</dependency>			
+			</dependency>
+			<dependency>
+				<artifactId>spring-webmvc</artifactId>
+				<groupId>org.springframework</groupId>
+				<version>3.1.1.RELEASE</version>
+				<scope>provided</scope>
+			</dependency>
+         <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+         </dependency>
 		</dependencies>
 	</dependencyManagement>
 </project>
