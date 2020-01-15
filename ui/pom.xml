@@ -8,9 +8,9 @@
 		<relativePath>../</relativePath>
 	</parent>
 	<groupId>it.4science.dspace</groupId>
-	<artifactId>addon-ckan-jspui</artifactId>
+	<artifactId>addon-ckan-ui</artifactId>
 	<packaging>war</packaging>
-	<name>4Science CKAN Integration JSPUI</name>
+	<name>4Science CKAN Integration UI</name>
 
     <properties>
         <!-- This is the path to the root [dspace-src] directory. -->
@@ -18,14 +18,14 @@
     </properties>
     	
 	<build>
-	  <finalName>addon-ckan-jspui</finalName>	
+	  <finalName>addon-ckan-ui</finalName>	
       <plugins>
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-war-plugin</artifactId>
             <version>2.4</version>
             <configuration>
-               <archiveClasses>false</archiveClasses>
+               <attachClasses>true</attachClasses>
                <!-- In version 2.1-alpha-1, this was incorrectly named warSourceExcludes -->
                <!-- <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes> -->
                <warSourceExcludes>WEB-INF/lib/*.jar</warSourceExcludes>
@@ -52,16 +52,48 @@
 	<dependencies>
 		<dependency>
 			<groupId>it.4science.dspace</groupId>
-			<artifactId>addon-commons-jspui</artifactId>
-			<type>war</type>
-		</dependency>
-		<dependency>
-			<groupId>org.dspace</groupId>
-			<artifactId>dspace-jspui</artifactId>
+			<artifactId>addon-commons-ui</artifactId>
 			<type>jar</type>
 			<classifier>classes</classifier>
+		</dependency>
+		<dependency>
+			<groupId>it.4science.dspace</groupId>
+			<artifactId>addon-commons-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>it.4science.dspace</groupId>
+			<artifactId>addon-ckan-api</artifactId>
+		</dependency>
+ 		<dependency>
+			<groupId>org.dspace</groupId>
+			<artifactId>dspace-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <scope>provided</scope>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+			<scope>provided</scope>	            
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+			<scope>provided</scope>	            
+        </dependency>
+		<dependency>
+		   <groupId>commons-lang</groupId>
+		   <artifactId>commons-lang</artifactId>
+		   <scope>provided</scope>			   
+		</dependency>
  	</dependencies>
-
 </project>

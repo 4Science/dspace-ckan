@@ -15,52 +15,21 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Dataset explorer</title>
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/recline/vendor/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/recline/vendor/bootstrap/3.2.0/css/bootstrap.css">
     <!-- vendor css -->
-    <link href="<%= request.getContextPath() %>/recline/vendor/leaflet/0.7.3/leaflet.css" rel="stylesheet">
-    <link href="<%= request.getContextPath() %>/recline/vendor/leaflet.markercluster/MarkerCluster.css" rel="stylesheet">
-    <link href="<%= request.getContextPath() %>/recline/vendor/leaflet.markercluster/MarkerCluster.Default.css" rel="stylesheet">
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/slick.grid.css">
+    <link href="<%= request.getContextPath() %>/static/recline/vendor/leaflet/0.7.3/leaflet.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/static/recline/vendor/leaflet.markercluster/MarkerCluster.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/static/recline/vendor/leaflet.markercluster/MarkerCluster.Default.css" rel="stylesheet">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/recline/vendor/slickgrid/2.2/slick.grid.css">
     
     <!-- recline css -->
-    <link href="<%= request.getContextPath() %>/recline/css/map.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/static/recline/css/map.css" rel="stylesheet">
 
-    <link href="<%= request.getContextPath() %>/recline/css/multiview.css" rel="stylesheet">
-    <link href="<%= request.getContextPath() %>/recline/css/slickgrid.css"rel="stylesheet">
-    <link href="<%= request.getContextPath() %>/recline/css/flot.css" rel="stylesheet">
-    
-    <!-- Vendor JS - general dependencies -->
-    <script src="<%= request.getContextPath() %>/recline/vendor/jquery/1.7.1/jquery.js" type="text/javascript"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/underscore/1.4.4/underscore.js" type="text/javascript"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/backbone/1.0.0/backbone.js" type="text/javascript"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/mustache/0.5.0-dev/mustache.js" type="text/javascript"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/bootstrap/3.2.0/js/bootstrap.js" type="text/javascript"></script>
+    <link href="<%= request.getContextPath() %>/static/recline/css/multiview.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/static/recline/css/slickgrid.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/static/recline/css/flot.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/static/css/addon-common.css" rel="stylesheet">
 
-    <!-- Vendor JS - view dependencies -->
-    <script src="<%= request.getContextPath() %>/recline/vendor/leaflet/0.7.3/leaflet.js" type="text/javascript"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/leaflet.markercluster/leaflet.markercluster.js" type="text/javascript"></script>
-    <script type="text/javascript" src="<%= request.getContextPath() %>/recline/vendor/flot/jquery.flot.js"></script>
-    <script type="text/javascript" src="<%= request.getContextPath() %>/recline/vendor/flot/jquery.flot.time.js"></script>
-    <script type="text/javascript" src="<%= request.getContextPath() %>/recline/vendor/moment/2.0.0/moment.js"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/jquery-ui-1.8.16.custom.min.js"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/jquery.event.drag-2.2.js"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/jquery.event.drop-2.2.js"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/slick.core.js"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/slick.formatters.js"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/slick.editors.js"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/slick.grid.js"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/plugins/slick.rowselectionmodel.js" type="text/javascript"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/plugins/slick.rowmovemanager.js" type="text/javascript"></script>
-
-    <!-- Recline JS (combined distribution, all views) -->
-    <script src="<%= request.getContextPath() %>/recline/recline.js" type="text/javascript"></script>
-    
-    <script src="<%= request.getContextPath() %>/recline/jquery-2.1.4.min.js"></script>
-	<script src="<%= request.getContextPath() %>/recline/ckan.js"></script>
-  </head>
-  <body>
-    <div class="container">
       <style type="text/css">
         .recline-slickgrid {
           height: 500px;
@@ -72,13 +41,48 @@
           margin-bottom: 10px;
         } --%>
       </style>
-<%--  
-     <div class="changelog">
-        <h3>Changes</h3>
-      </div>
-  --%>
-      <div class="data-explorer-here"></div>
-      <div style="clear: both;"></div>
+          
+    <!-- Vendor JS - general dependencies -->
+    <script src="<%= request.getContextPath() %>/static/recline/vendor/jquery/1.7.1/jquery.js" type="text/javascript"></script>
+    <script src="<%= request.getContextPath() %>/static/recline/vendor/underscore/1.4.4/underscore.js" type="text/javascript"></script>
+    <script src="<%= request.getContextPath() %>/static/recline/vendor/backbone/1.0.0/backbone.js" type="text/javascript"></script>
+    <script src="<%= request.getContextPath() %>/static/recline/vendor/mustache/0.5.0-dev/mustache.js" type="text/javascript"></script>
+    <script src="<%= request.getContextPath() %>/static/recline/vendor/bootstrap/3.2.0/js/bootstrap.js" type="text/javascript"></script>
+
+    <!-- Vendor JS - view dependencies -->
+    <script src="<%= request.getContextPath() %>/static/recline/vendor/leaflet/0.7.3/leaflet.js" type="text/javascript"></script>
+    <script src="<%= request.getContextPath() %>/static/recline/vendor/leaflet.markercluster/leaflet.markercluster.js" type="text/javascript"></script>
+    <script type="text/javascript" src="<%= request.getContextPath() %>/static/recline/vendor/flot/jquery.flot.js"></script>
+    <script type="text/javascript" src="<%= request.getContextPath() %>/static/recline/vendor/flot/jquery.flot.time.js"></script>
+    <script type="text/javascript" src="<%= request.getContextPath() %>/static/recline/vendor/moment/2.0.0/moment.js"></script>
+    <script src="<%= request.getContextPath() %>/static/recline/vendor/slickgrid/2.2/jquery-ui-1.8.16.custom.min.js"></script>
+    <script src="<%= request.getContextPath() %>/static/recline/vendor/slickgrid/2.2/jquery.event.drag-2.2.js"></script>
+    <script src="<%= request.getContextPath() %>/static/recline/vendor/slickgrid/2.2/jquery.event.drop-2.2.js"></script>
+    <script src="<%= request.getContextPath() %>/static/recline/vendor/slickgrid/2.2/slick.core.js"></script>
+    <script src="<%= request.getContextPath() %>/static/recline/vendor/slickgrid/2.2/slick.formatters.js"></script>
+    <script src="<%= request.getContextPath() %>/static/recline/vendor/slickgrid/2.2/slick.editors.js"></script>
+    <script src="<%= request.getContextPath() %>/static/recline/vendor/slickgrid/2.2/slick.grid.js"></script>
+    <script src="<%= request.getContextPath() %>/static/recline/vendor/slickgrid/2.2/plugins/slick.rowselectionmodel.js" type="text/javascript"></script>
+    <script src="<%= request.getContextPath() %>/static/recline/vendor/slickgrid/2.2/plugins/slick.rowmovemanager.js" type="text/javascript"></script>
+
+    <!-- Recline JS (combined distribution, all views) -->
+    <script src="<%= request.getContextPath() %>/static/recline/recline.js" type="text/javascript"></script>
+    
+    <script src="<%= request.getContextPath() %>/static/recline/jquery-2.1.4.min.js"></script>
+	<script src="<%= request.getContextPath() %>/static/recline/ckan.js"></script>
+  </head>
+  <body>
+    <div class="container fullheight">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="wrapper">
+    	  			<div class="data-explorer-here"></div>
+	    	  	</div>
+      		</div>
+	    </div>
+      
+    	<div style="clear: both;"></div>
+      
 
       <script type="text/javascript">
       
