@@ -199,6 +199,14 @@
 			</dependency>
 			<dependency>
 				<groupId>it.4science.dspace</groupId>
+				<artifactId>addon-commons-jspui</artifactId>
+				<type>jar</type>
+				<version>${addon-commons.version}</version>
+				<classifier>classes</classifier>
+				<scope>provided</scope>
+			</dependency>			
+			<dependency>
+				<groupId>it.4science.dspace</groupId>
 				<artifactId>addon-commons-ui</artifactId>
 				<type>jar</type>
 				<classifier>classes</classifier>

@@ -37,4 +37,23 @@
 		<url-pattern>/ckan/*</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>ckan</servlet-name>
+		<jsp-file>/viewers/ckan-recline.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ckan</servlet-name>
+		<url-pattern>/viewers/ckan-recline.jsp</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ckan-embed</servlet-name>
+		<jsp-file>/viewers/ckan-recline-embed.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ckan-embed</servlet-name>
+		<url-pattern>/viewers/ckan-recline-embed.jsp</url-pattern>
+	</servlet-mapping>
 </web-fragment>
