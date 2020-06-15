@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Cypress Open GUI",
+      "type": "shell",
+      "command": "npm run cypress:open",
+      "problemMatcher": []
+    },
+    {
+      "label": "Cypress CI",
+      "type": "shell",
+      "command": "npm run cypress:ci",
+      "problemMatcher": []
+    }
+  ]
+}

@@ -43,15 +43,15 @@
     <script type="text/javascript" src="<%= request.getContextPath() %>/recline/vendor/flot/jquery.flot.js"></script>
     <script type="text/javascript" src="<%= request.getContextPath() %>/recline/vendor/flot/jquery.flot.time.js"></script>
     <script type="text/javascript" src="<%= request.getContextPath() %>/recline/vendor/moment/2.0.0/moment.js"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/jquery-ui-1.8.16.custom.min.js"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/jquery.event.drag-2.2.js"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/jquery.event.drop-2.2.js"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/slick.core.js"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/slick.formatters.js"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/slick.editors.js"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/slick.grid.js"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/plugins/slick.rowselectionmodel.js" type="text/javascript"></script>
-    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.2/plugins/slick.rowmovemanager.js" type="text/javascript"></script>
+    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.4.24/lib/jquery-ui.min.js"></script>
+    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.4.24/lib/jquery.event.drag-2.3.0.js"></script>
+    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.4.24/lib/jquery.event.drop-2.3.0.js"></script>
+    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.4.24/slick.core.js"></script>
+    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.4.24/slick.formatters.js"></script>
+    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.4.24/slick.editors.js"></script>
+    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.4.24/slick.grid.js"></script>
+    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.4.24/plugins/slick.rowselectionmodel.js" type="text/javascript"></script>
+    <script src="<%= request.getContextPath() %>/recline/vendor/slickgrid/2.4.24/plugins/slick.rowmovemanager.js" type="text/javascript"></script>
 
     <!-- Recline JS (combined distribution, all views) -->
     <script src="<%= request.getContextPath() %>/recline/recline.js" type="text/javascript"></script>
