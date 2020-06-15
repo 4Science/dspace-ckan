@@ -31,7 +31,7 @@
     <link href="<%= request.getContextPath() %>/recline/css/flot.css" rel="stylesheet">
     
     <!-- Vendor JS - general dependencies -->
-    <script src="<%= request.getContextPath() %>/recline/vendor/jquery/1.7.1/jquery.js" type="text/javascript"></script>
+    <script src="<%= request.getContextPath() %>/recline/vendor/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
     <script src="<%= request.getContextPath() %>/recline/vendor/underscore/1.4.4/underscore.js" type="text/javascript"></script>
     <script src="<%= request.getContextPath() %>/recline/vendor/backbone/1.0.0/backbone.js" type="text/javascript"></script>
     <script src="<%= request.getContextPath() %>/recline/vendor/mustache/0.5.0-dev/mustache.js" type="text/javascript"></script>
@@ -55,8 +55,6 @@
 
     <!-- Recline JS (combined distribution, all views) -->
     <script src="<%= request.getContextPath() %>/recline/recline.js" type="text/javascript"></script>
-    
-    <script src="<%= request.getContextPath() %>/recline/jquery-2.1.4.min.js"></script>
 	<script src="<%= request.getContextPath() %>/recline/ckan.js"></script>
   </head>
   <body>
