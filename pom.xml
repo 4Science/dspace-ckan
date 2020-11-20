@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>it.4science.dspace</groupId>
 	<artifactId>addon-ckan</artifactId>
-	<version>CRIS-5.1-SNAPSHOT</version>
+	<version>CRIS-5.2-SNAPSHOT</version>
 	<organization>
 		<name>4Science</name>
 		<url>http://www.4science.it/en/</url>
