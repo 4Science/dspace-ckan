@@ -37,17 +37,12 @@ import org.dspace.curate.AbstractCurationTask;
 import org.dspace.curate.Curator;
 import org.dspace.curate.Distributive;
 import org.dspace.storage.bitstore.BitstreamStorageManager;
-import org.dspace.utils.DSpace;
 import org.json.JSONObject;
 
 @Distributive
 public class CKANUploaderCurationTask extends AbstractCurationTask {
 
 	protected Logger log = Logger.getLogger(CKANUploaderCurationTask.class);
-
-	private BitstreamStorageManager bitstreamStorageManager = new DSpace().getServiceManager()
-			.getServiceByName(BitstreamStorageManager.class.getName(),
-					BitstreamStorageManager.class);
 
 	private Set<String> validFormats = new HashSet<String>();
 	
@@ -134,7 +129,7 @@ public class CKANUploaderCurationTask extends AbstractCurationTask {
 				}		 			
 
 				String fileName = URLEncoder.encode(b.getName());
-				InputStream input = bitstreamStorageManager.retrieve(c, b.getID());
+				InputStream input = BitstreamStorageManager.retrieve(c, b.getID());
 				
 				DefaultHttpClient resClient = null; 
 				InputStream is = null;
